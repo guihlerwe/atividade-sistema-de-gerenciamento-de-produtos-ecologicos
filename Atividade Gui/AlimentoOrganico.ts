@@ -1,56 +1,32 @@
 import { ProdutoEcologico } from "./ProdutoEcologico";
-class AlimentoOrganico implements ProdutoEcologico{
+class AlimentoOrganico implements ProdutoEcologico {
     nome: string;
     preco: number;
+    dataValidade  : Date;
+    ingredientes : string[];
 
-    constructor (nome:string, preco:number) {
+    list: AlimentoOrganico[]  = []
+
+    constructor(nome: string, preco: number, dataValidade: Date, ingredientes: string[]) {
         this.nome = nome;
         this.preco = preco;
+        this.dataValidade = dataValidade;
+        this.ingredientes = ingredientes;
     }
+
+
+
+    cadastrarLista(alimento: AlimentoOrganico) {
+        this.list.push(alimento);
+    }
+
+    exibir (): void{
+       console.log (`Os detalhes do alimento ${alimento.nome} são preco:${alimento.preco}, data de validade: ${alimento.dataValidade}  e igredientes: ${alimento.ingredientes}`);
+    }
+
     
-
 }
-
-const alimento = new AlimentoOrganico("banana", 100);
-
-
+const alimento = new AlimentoOrganico("verdura", 80, new Date("20/1/2000"), ["nada"])
+alimento.cadastrarLista(alimento);
 
 
-
-
-
-
-
-
-/* const contaCorrente = new ContaCorrente(1000);
-
-contaCorrente.depositar(500);
-
-contaCorrente.sacar(200);
-
-contaCorrente.sacar(1301);
-
-import { ContaBancaria } from "./contabancaria";
-class ContaCorrente implements ContaBancaria {
-    saldo: number;
-
-    constructor(saldoInicial: number) {
-        this.saldo = saldoInicial;
-    }
-    depositar(valor: number): void {
-        this.saldo += valor;;
-    }
-
-    sacar(valor:number): void{
-        if(this.saldo>0){
-
-            this.saldo-=valor;
-        }else{
-            console.log("nao há saldo");
-        }
-    }
-
-
-
-}
-    */
